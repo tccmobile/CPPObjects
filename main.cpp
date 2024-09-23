@@ -6,31 +6,41 @@ using namespace std;
 
 int main() {
 
-    Person one;
-    Person two("Sue",52);
-    vector<int> grades = {85, 92,77,99,80};
+    Person *one = new Person();
+    Person *two = new Person("Sue",52);
 
-    one.printMe();
-    two.printMe();
-    two.hasBirthday();
-    two.printMe();
+    cout<<"I have "<<Person::getInventory()<<" persons"<<endl;
+    Person *three = new Person("Carl", 42);
+    cout<<"I have "<<Person::getInventory()<<" persons"<<endl;
+
+    cout << *one <<endl;
+    cout << *two << endl;
+    two->hasBirthday();
+    cout << *two << endl;
    // two.setName("Mary");
-    two.printMe();
-    if (one.isMinor()){
+    cout << *two <<endl;
+    if (one->isMinor()){
         cout << "You are a minor" << endl;
     } else {
         cout<< "You are an adult"<< endl;
     }
-    one.hasBirthday();
-    if (one.isMinor()){
+    one->hasBirthday();
+    if (one->isMinor()){
         cout << "You are a minor" << endl;
     } else {
         cout<< "You are an adult"<< endl;
     }
 
-    cout << one;
-    cout << two;
-    
+
+
+    delete one;
+    cout<<"I have "<<Person::getInventory()<<" persons"<<endl;
+
+    delete two;
+    cout<<"I have "<<Person::getInventory()<<" persons"<<endl;
+
+    delete three;
+    cout<<"I have "<<Person::getInventory()<<" persons"<<endl;
 
 
 

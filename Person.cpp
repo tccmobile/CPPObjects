@@ -7,6 +7,12 @@
 #include <vector>
 using namespace std;
 
+int Person::numPersons = 0;
+
+Person::~Person(){
+    Person::numPersons--;
+}
+
 bool Person::isMinor() {
     return (age < 18);
 }
@@ -22,11 +28,13 @@ void Person::printMe() {
 Person::Person(){
     name = "unknown";
     age = 17;
+    Person::numPersons ++;
 }
 
 Person::Person(string newName, int newAge){
     name = newName;
     age = newAge;
+    Person::numPersons ++;
 }
 
 void Person::setAge(int newAge) {
@@ -53,13 +61,12 @@ void Person::setSSN(long ssn) {
     Person::ssn = ssn;
 }
 
+int Person::getInventory() {
+    return Person::numPersons;
+}
+
 ostream &operator<<(ostream &os, const Person &person) {
     os << "name: " << person.name << " age: " << person.age << " ssn: " << person.ssn;
     return os;
 }
-ostream &operator<<(ostream &os,const vector<int> &myGrades) {
-    for (int i = 0; i < myGrades.size(); i++){
-        os << myGrades.at(i) << endl;
-    }
-    return os;
-}
+

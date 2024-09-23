@@ -14,7 +14,9 @@ private:
     string name;
     int age;
     long ssn;
+    static int numPersons;
 public:
+    ~Person();
     Person();
     Person(string, int);
     void setName(string);
@@ -26,7 +28,7 @@ public:
     bool isMinor();
     long getSSN() const;
     void setSSN(long ssn);
-    friend ostream &operator<<(ostream &os, const vector<int>&);
+    static int getInventory();
 
     friend ostream &operator<<(ostream &os, const Person &person);
 };
